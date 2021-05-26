@@ -32,7 +32,8 @@ function getGraphqlData(login){
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            mode: 'no-cors'
+            mode: 'no-cors',
+            'Authorization': 'bearer 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'
         },
         body: JSON.stringify({
             query,
