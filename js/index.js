@@ -26,18 +26,24 @@ const query = `query
       }
     }`
 
-function getGraphqlData(login){
-    fetch(`${API_URL}/graphql`,{
-        method: 'POST',
-        headers: {
-            'Authorization': 'Bearer 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'
-        },
-        body: JSON.stringify({
-            query,
-            variables: {login,first}
-        })
-    }).then(r=>r.json()).then(data => {return data}).catch(error=>{return error})
-}
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer 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");
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: JSON.stringify({
+        query,
+        variables: {login,first}
+    }),
+      redirect: 'follow'
+    };
+    
+    fetch("https://api.github.com/graphql", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+
 
 
 
