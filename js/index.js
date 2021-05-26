@@ -6,7 +6,7 @@
 //There should be a state if there is no repo for the user
 //Populate the html page with the data
 //   Write a function that accepts an array and creates dom nodes using the values of the array
-const API_URL = "https://cors-anywhere.herokuapp.com/https://developer.github.com/v4/explorer"
+const API_URL = "https://developer.github.com/v4/explorer"
 const first = 20
 
 const query = `query  
