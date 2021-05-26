@@ -9,12 +9,12 @@
 const API_URL = "https://api.github.com"
 const first = 20
 
-const query = `query  
-    user($login:Sring!, $first: Int!) { 
+const query = `query user($login:String!) {
+    user(login: $login) { 
       avatarUrl
       bio
       bioHTML
-      repositories(first: 20, ){
+      repositories(first: 20){
         nodes{
           stargazerCount
           updatedAt
@@ -24,26 +24,30 @@ const query = `query
           }
         }
       }
-    }`
+    }
+}`
+    
+    
+ async function fetchGraphqlData(username){
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+          "Authorization": "Bearer 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",
+          "Content-Type": "application/json"},
+        body: JSON.stringify({
+          query,
+          variables: {login: username}
+      }),
+        redirect: 'follow'
+      };
 
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer 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");
-    
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: JSON.stringify({
-        query,
-        variables: {login,first}
-    }),
-      redirect: 'follow'
-    };
-    
-    fetch("https://api.github.com/graphql", requestOptions)
+      const result = await fetch("https://api.github.com/graphql", requestOptions)
       .then(response => response.text())
-      .then(result => console.log(result))
+      .then(result => {return result})
       .catch(error => console.log('error', error));
 
+      return result
+ }   
 
 
 
@@ -59,8 +63,7 @@ async function handleSubmit(event) {
         loading(true)
         //fire the fetch
         try {
-            const result = await getGraphqlData(gitUsername);
-            console.log(result)
+           await fetchGraphqlData(gitUsername).then(data =>{console.log(data)})
 
             usernameForm.setAttribute('hidden', '')
         }
