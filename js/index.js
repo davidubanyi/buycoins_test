@@ -30,7 +30,7 @@ function getGraphqlData(login){
     fetch(`${API_URL}/graphql`,{
         method: 'POST',
         headers: {
-            'Authorization': 'bearer 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'
+            'Authorization': 'Bearer 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'
         },
         body: JSON.stringify({
             query,
