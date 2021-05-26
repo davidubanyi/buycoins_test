@@ -6,50 +6,6 @@
 //There should be a state if there is no repo for the user
 //Populate the html page with the data
 //   Write a function that accepts an array and creates dom nodes using the values of the array
-const API_URL = "https://api.github.com"
-const first = 20
-
-const query = `query user($login:String!) {
-    user(login: $login) { 
-      avatarUrl
-      bio
-      bioHTML
-      repositories(first: 20){
-        nodes{
-          stargazerCount
-          updatedAt
-          primaryLanguage{
-            color
-            name
-          }
-        }
-      }
-    }
-}`
-    
-    
- async function fetchGraphqlData(username){
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-          "Authorization": "Bearer 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",
-          "Content-Type": "application/json"},
-        body: JSON.stringify({
-          query,
-          variables: {login: username}
-      }),
-        redirect: 'follow'
-      };
-
-      const result = await fetch("https://api.github.com/graphql", requestOptions)
-      .then(response => response.text())
-      .then(result => {return result})
-      .catch(error => console.log('error', error));
-
-      return result
- }   
-
-
 
 const usernameForm = document.getElementById('usernameForm');
 usernameForm.onsubmit = handleSubmit;
@@ -64,8 +20,11 @@ async function handleSubmit(event) {
         //fire the fetch
         try {
            await fetchGraphqlData(gitUsername).then(data =>{console.log(data)})
-
-            usernameForm.setAttribute('hidden', '')
+           //hide the user inpur form
+           usernameForm.setAttribute('hidden', '')
+           //introduce the ui for the profile page
+           //go to the profile url
+           
         }
         catch (error) {
             console.log(error)

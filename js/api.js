@@ -2,15 +2,14 @@
 //1. Connect to the graphql api
 //2. Fetch the data from the api after search
 
-const API_URL = "https://developer.github.com/v4/explorer/"
-const first = 20
+const API_URL = "https://api.github.com"
 
-const query = `query  
-    user($login:Sring!, $first: Int!) { 
+const query = `query user($login:String!) {
+    user(login: $login) { 
       avatarUrl
       bio
       bioHTML
-      repositories(first: 20, ){
+      repositories(first: 20){
         nodes{
           stargazerCount
           updatedAt
@@ -20,18 +19,27 @@ const query = `query
           }
         }
       }
-    }`
-
-function getGraphqlData(login){
-    fetch(`${API_URL}/graphql`,{
+    }
+}`
+    
+    
+ async function fetchGraphqlData(username){
+    const requestOptions = {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
+          "Authorization": "Bearer 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",
+          "Content-Type": "application/json"},
         body: JSON.stringify({
-            query,
-            variables: {login,first}
-        })
-    }).then(r=>r.json()).then(data => {return data})
-}
+          query,
+          variables: {login: username}
+      }),
+        redirect: 'follow'
+      };
+
+      const result = await fetch("https://api.github.com/graphql", requestOptions)
+      .then(response => response.text())
+      .then(result => {return result})
+      .catch(error => console.log('error', error));
+
+      return result
+ }   
