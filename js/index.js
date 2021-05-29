@@ -1,15 +1,12 @@
-//TODO
-//1. Get the username value
-//Send value to the api service to fetch the data
-//Show a loading state 
-//Send to new page or show error if fetch didn't succeed
-//There should be a state if there is no repo for the user
-//Populate the html page with the data
-//   Write a function that accepts an array and creates dom nodes using the values of the array
+
+
+import fetchGraphqlData from './api'
+
 
 const usernameForm = document.getElementById('usernameForm');
+const errorDiv = document.getElementById('error');
+const mainContent = document.querySelector('.main')
 usernameForm.onsubmit = handleSubmit;
-const errorDiv = document.getElementById('error')
 
 
 async function handleSubmit(event) {
@@ -19,10 +16,15 @@ async function handleSubmit(event) {
         loading(true)
         //fire the fetch
         try {
-           await fetchGraphqlData(gitUsername).then(data =>{console.log(data)})
+           const userData = await fetchGraphqlData(gitUsername)
+           if(userData.errors){
+             throw (userData.errors[0].message)
+        } else { console.log(userData.data)}
+           //pass user data to html template
            //hide the user inpur form
            usernameForm.setAttribute('hidden', '')
            //introduce the ui for the profile page
+          // mainContent.classList.remove('is-hidden')
            //go to the profile url
            
         }

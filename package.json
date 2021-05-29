@@ -1,0 +1,31 @@
+{
+  "name": "buycoins_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidubanyi/buycoins_test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidubanyi/buycoins_test/issues"
+  },
+  "homepage": "https://github.com/davidubanyi/buycoins_test#readme",
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ],
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.2"
+  }
+}
