@@ -124,7 +124,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-const apiKey = `Bearer ${"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"}`;
+const apiKey = `Bearer ${"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"}`;
 const apiUrl = "https://api.github.com/graphql";
 const query = `query user($login:String!) {
     user(login: $login) { 
@@ -217,7 +217,7 @@ function loading(state) {
     console.log("loading off");
   }
 }
-},{"./api":"js/api.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./api":"js/api.js"}],"C:/Users/BOSS/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -245,7 +245,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56312" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60518" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -421,5 +421,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
+},{}]},{},["C:/Users/BOSS/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
 //# sourceMappingURL=/js.00a46daa.js.map
