@@ -1,8 +1,5 @@
-//TODO
-//1. Connect to the graphql api
-//2. Fetch the data from the api after search
-
-const API_URL = "https://api.github.com"
+const apiKey = `Bearer ${process.env.API_KEY}`
+const apiUrl = process.env.API_URL
 
 const query = `query user($login:String!) {
     user(login: $login) { 
@@ -27,7 +24,7 @@ const query = `query user($login:String!) {
     const requestOptions = {
         method: 'POST',
         headers: {
-          "Authorization": "Bearer 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",
+          "Authorization": apiKey,
           "Content-Type": "application/json"},
         body: JSON.stringify({
           query,
@@ -36,10 +33,12 @@ const query = `query user($login:String!) {
         redirect: 'follow'
       };
 
-      const result = await fetch("https://api.github.com/graphql", requestOptions)
-      .then(response => response.text())
-      .then(result => {return result})
-      .catch(error => console.log('error', error));
+      const result = await fetch(apiUrl, requestOptions)
+      .then(response => response.json())
 
       return result
+
  }   
+
+
+ export default fetchGraphqlData
