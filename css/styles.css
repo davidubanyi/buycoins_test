@@ -4,7 +4,7 @@ body {
 }
 
 header {
-    background: #24292e;
+    background-color: #24292e;
     padding: 16px;
 }
 .nav-wrapper{
@@ -28,13 +28,13 @@ header {
 .is-hidden {
     display: none;
 }
-.Header {
+.header-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.Header-item{
+.header-item{
     margin-right: 16px;
 }
 
@@ -98,23 +98,25 @@ header {
     position: relative;
 }
 
-.plus-wrapper{
+.plus-nav-wrapper{
     display: flex;
+    align-items: center;
+}
+
+.avatar-nav-wrapper{
+    display: flex;
+    align-items: center;
 }
 .flex{
     display: flex;
 }
 .dropdown-caret {
-    display: inline-block;
     width: 0;
     height: 0;
-    vertical-align: middle;
-    background: white;
     content: "";
-    border-top-style: solid;
-    border-top-width: 4px;
+    margin-left: 5px;
+    border-top: 4px solid #ffffff;
     border-right: 4px solid transparent;
-    border-bottom: 0 solid transparent;
     border-left: 4px solid transparent;
 }
 
