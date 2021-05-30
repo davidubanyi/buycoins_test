@@ -8,6 +8,8 @@ const query = `query user($login:String!) {
       bioHTML
       repositories(first: 20){
         nodes{
+          name
+          description
           stargazerCount
           updatedAt
           primaryLanguage{
