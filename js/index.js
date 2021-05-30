@@ -17,8 +17,8 @@ async function handleSubmit(event) {
         //fire the fetch
         try {
            const userData = await fetchGraphqlData(gitUsername)
-           if(userData.errors){
-             throw (userData.errors[0].message)
+           if(userData.errors || userData.documentation_url){
+             throw (userData.errors ? userData.errors[0].message : userData.message)
         } else { console.log(userData.data)}
            //pass user data to html template
            //hide the user inpur form
