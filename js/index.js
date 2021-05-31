@@ -1,8 +1,10 @@
 
 
 import fetchGraphqlData from './api'
+import htmlUpdater from './templating'
+import repoHtml from './templates'
 
-
+const repositoryDiv = document.querySelector('.repository-wrapper')
 const usernameForm = document.getElementById('usernameForm');
 const errorDiv = document.getElementById('error');
 const mainContent = document.querySelector('.main')
@@ -19,10 +21,17 @@ async function handleSubmit(event) {
            const userData = await fetchGraphqlData(gitUsername)
            if(userData.errors || userData.documentation_url){
              throw (userData.errors ? userData.errors[0].message : userData.message)
-        } else { console.log(userData.data)}
+        }
+        //the data is fine 
+        else { 
+            usernameForm.setAttribute('hidden', '')
+            mainContent.removeAttribute('hidden')
+            //update the repositories
+            htmlUpdater(repositoryDiv, repoHtml, userData.data.user.repositories.nodes)
+        
+        }
            //pass user data to html template
            //hide the user inpur form
-           usernameForm.setAttribute('hidden', '')
            //introduce the ui for the profile page
           // mainContent.classList.remove('is-hidden')
            //go to the profile url

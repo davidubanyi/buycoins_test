@@ -129,10 +129,16 @@ header {
     margin-top: 24px;
     border-bottom: 1px solid #e1e4e8;
     position: sticky;
-    display: flex;
     top: 0;
     background-color: white;
+    z-index: 3;
 }
+.sticky-nav-container{
+    display: flex;
+    max-width: 1280px;
+    margin: auto;
+}
+
 .nav-control{
     flex: 3;
 }
@@ -185,6 +191,8 @@ header {
 
 .main-content-wrapper {
     display: flex;
+    max-width: 1280px;
+    margin: auto;
 }
 .search-wrapper {
     padding: 16px 0;
@@ -219,8 +227,76 @@ header {
 .repository-details-wrapper{
     display: flex;
     justify-content: space-between;   
+    border-bottom: 1px solid #e1e4e8;
+    padding: 18px 0;
 }
 
 .star-button{
     align-self: baseline;
+    margin: 10px;
+    padding: 4px 13px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #24292e;
+    background-color: #fafbfc;
+    border-color: #1b1f2326;
+    transition: .2s cubic-bezier(.3,0,.5,1);
+    transition-property: color,background-color,border-color;
+    border-radius: 6px;
+    font-family: inherit;
+    vertical-align: middle;
+}
+
+.star-button .octicon{
+    fill: #6a737d;
+    margin-right: 5px;
+    vertical-align: sub;
+}
+
+.star-button:hover{
+    cursor: pointer;
+}
+
+.repository-details{
+    
+}
+.repository-details-name{
+    color: #0366d6;
+
+}
+.repository-details-name:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.repository-details-description{
+    font-size: 14px;
+    color: #6a737d;
+}
+
+.repository-details-stats {
+    display: flex;
+    color: #6a737d;
+    fill: #6a737d;
+    font-size: 12px;
+}
+.repository-details-stats p{
+margin-right: 20px;
+}
+
+
+
+.repository-details-stats svg{
+    fill: inherit;
+    vertical-align: bottom;
+    margin-right: 5px;
+}
+
+.repo-language-color {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
 }

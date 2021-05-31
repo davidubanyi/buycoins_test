@@ -11,6 +11,7 @@ const query = `query user($login:String!) {
           name
           description
           stargazerCount
+          forkCount
           updatedAt
           primaryLanguage{
             color
