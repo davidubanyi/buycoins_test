@@ -4,10 +4,45 @@ body {
     box-sizing: border-box;
 }
 
+h3,h2,p{
+    margin: 0;
+}
+
 header {
     background-color: #24292e;
     padding: 16px;
 }
+
+#usernameForm {
+    max-width: 700px;
+    margin: 4em auto;
+}
+
+#usernameForm h1{
+    font-family: inherit;
+    text-align: center;
+}
+#usernameForm input{
+   flex: auto;
+    height: fit-content;
+    margin-right: 10px;
+}
+#usernameForm button{
+    margin: 0;
+    flex: none;
+}
+
+.username-input-wrapper{
+    display: flex;
+}
+
+.error{
+    color: red;
+    text-align: center;
+    font-weight: 600;
+    font-family: inherit;
+}
+
 .nav-wrapper{
     display: flex;
     align-items: center;
@@ -27,7 +62,7 @@ header {
 }
 
 .is-hidden {
-    display: none;
+    display: none !important;
 }
 .header-wrapper {
     display: flex;
@@ -231,7 +266,7 @@ header {
     padding: 18px 0;
 }
 
-.star-button{
+.button{
     align-self: baseline;
     margin: 10px;
     padding: 4px 13px;
@@ -247,13 +282,13 @@ header {
     vertical-align: middle;
 }
 
-.star-button .octicon{
+.button .octicon{
     fill: #6a737d;
     margin-right: 5px;
     vertical-align: sub;
 }
 
-.star-button:hover{
+.button:hover{
     cursor: pointer;
 }
 
@@ -262,7 +297,7 @@ header {
 }
 .repository-details-name{
     color: #0366d6;
-
+    margin-bottom: .7em;
 }
 .repository-details-name:hover{
     cursor: pointer;
@@ -271,6 +306,7 @@ header {
 .repository-details-description{
     font-size: 14px;
     color: #6a737d;
+    max-width: 700px;
 }
 
 .repository-details-stats {
@@ -278,6 +314,7 @@ header {
     color: #6a737d;
     fill: #6a737d;
     font-size: 12px;
+    margin-top: 1.5em;
 }
 .repository-details-stats p{
 margin-right: 20px;
@@ -299,4 +336,25 @@ margin-right: 20px;
     height: 12px;
     border-radius: 50%;
     margin-right: 5px;
+}
+
+.big-avatar{
+    margin-top: -30px;
+    position: relative;
+    z-index: 5;
+    border-radius: 50% !important;
+}
+
+.avatar-name{
+    margin-top: 1em;
+
+}
+.avatar-username{
+    color: #6a737d;
+    margin-top: 3px;
+    font-size: 16px;
+}
+.avatar-bio{
+    color: #3a3a3a;
+    margin-top: 20px;
 }

@@ -2,9 +2,11 @@
 
 import fetchGraphqlData from './api'
 import htmlUpdater from './templating'
-import repoHtml from './templates'
+import {repoHtml, avatarHtml} from './templates'
 
 const repositoryDiv = document.querySelector('.repository-wrapper')
+const profileDiv = document.querySelector('.profile-wrapper')
+const repoCounter = document.querySelector('.repository-counter')
 const usernameForm = document.getElementById('usernameForm');
 const errorDiv = document.getElementById('error');
 const mainContent = document.querySelector('.main')
@@ -21,21 +23,23 @@ async function handleSubmit(event) {
            const userData = await fetchGraphqlData(gitUsername)
            if(userData.errors || userData.documentation_url){
              throw (userData.errors ? userData.errors[0].message : userData.message)
-        }
-        //the data is fine 
-        else { 
-            usernameForm.setAttribute('hidden', '')
-            mainContent.removeAttribute('hidden')
+            }
+            //the data is fine 
+            else { 
+            const user = userData.data.user
+            //simplify data from the api
+            const repos = [...user.repositories.nodes]
+            const profile = {name: user.name, bio: user.bio, username: user.login, avatarUrl: user.avatarUrl }
             //update the repositories
-            htmlUpdater(repositoryDiv, repoHtml, userData.data.user.repositories.nodes)
-        
+            htmlUpdater(repos, repositoryDiv, repoHtml)
+            //update the profile
+            htmlUpdater(profile, profileDiv, avatarHtml )
+            //update repo count
+            htmlUpdater(user.repositories.totalCount, repoCounter)    
+            //show the page with the updated info
+            mainContent.removeAttribute('hidden')
+            usernameForm.classList.add('is-hidden')
         }
-           //pass user data to html template
-           //hide the user inpur form
-           //introduce the ui for the profile page
-          // mainContent.classList.remove('is-hidden')
-           //go to the profile url
-           
         }
         catch (error) {
             console.log(error)

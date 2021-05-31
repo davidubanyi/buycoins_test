@@ -2,11 +2,14 @@ const apiKey = `Bearer ${process.env.API_KEY}`
 const apiUrl = process.env.API_URL
 
 const query = `query user($login:String!) {
-    user(login: $login) { 
+    user(login: $login) {
+      name
+      login
       avatarUrl
       bio
       bioHTML
-      repositories(first: 20){
+      repositories(last: 20){
+        totalCount
         nodes{
           name
           description
