@@ -1,11 +1,12 @@
 import fetchGraphqlData from "./api";
 import htmlRenderer from "./templating";
-import { repoTemplate, avatarTemplate } from "./templates";
+import { repoTemplate, avatarTemplate, mobileAvatarTemplate } from "./templates";
 
 //get template nodes
 const repositoryDiv = document.querySelector(".repository-wrapper");
 const profileDiv = document.querySelector(".profile-wrapper");
 const repoCounter = document.querySelector(".repository-counter");
+const mobileProfileDiv = document.querySelector(".mobile-avatar-wrapper")
 
 //get static content nodes
 const usernameForm = document.getElementById("usernameForm");
@@ -46,6 +47,8 @@ async function handleSubmit(event) {
         htmlRenderer(repos, repositoryDiv, repoTemplate);
         //update the profile
         htmlRenderer(profile, profileDiv, avatarTemplate);
+        //update the mobile profile
+        htmlRenderer(profile, mobileProfileDiv, mobileAvatarTemplate)
         //update repo count
         htmlRenderer(user.repositories.totalCount, repoCounter);
         //show the page with the updated info

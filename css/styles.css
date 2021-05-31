@@ -4,7 +4,7 @@ body {
     box-sizing: border-box;
 }
 
-h3,h2,p{
+h3,h2,p,h4{
     margin: 0;
 }
 
@@ -12,7 +12,9 @@ header {
     background-color: #24292e;
     padding: 16px;
 }
-
+.mobile{
+    display: none;
+}
 #usernameForm {
     max-width: 700px;
     margin: 4em auto;
@@ -306,7 +308,7 @@ header {
 .repository-details-description{
     font-size: 14px;
     color: #6a737d;
-    max-width: 700px;
+    max-width: 600px;
 }
 
 .repository-details-stats {
@@ -369,6 +371,9 @@ margin-right: 20px;
     .repository-details-description{
         max-width: 200px;
     }
+    .repository-details-name{
+        max-width: 200px;
+    }
     .repository-details-stats p:nth-child(2), p:nth-child(3) {
         display: none;
     }
@@ -391,5 +396,37 @@ margin-right: 20px;
     }
     .search-wrapper{
         padding: 4px 0 20px;
+    }
+    #usernameForm{
+        padding: 10px;
+    }
+    #usernameForm h1{
+        font-size: larger;
+    }
+    #usernameForm button{
+        width: 100%;
+        margin-top: 10px;
+    }
+    #usernameForm input{
+        width: auto;
+        margin-right: 0;
+    }
+    .username-input-wrapper{
+        flex-direction: column;
+    }
+    .mobile{
+        display: block;
+    }
+    .mobile-header{
+        display: flex;
+        justify-content: space-between;
+    }
+    .mobile-avatar-wrapper{
+        display: flex;
+        padding: 15px;
+        align-items: center;
+    }
+    .mobile-avatar-wrapper img{
+        margin-right: 15px;
     }
  }

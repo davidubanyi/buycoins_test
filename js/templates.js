@@ -22,6 +22,24 @@ const avatarTemplate = (avatar) => {
                 </div>`;
 };
 
+const mobileAvatarTemplate = (avatar) => {
+    return `
+    <img
+    alt="avatar"
+    size="20"
+    data-view-component="true"
+    height="60"
+    width="60"
+    class="avatar-user avatar avatar-small"
+    src="${avatar.avatarUrl}"
+  />
+  <div class="mobile-avatar-details">
+      <h4>${avatar.name}</h4>
+      <p>${avatar.username}</p>
+  </div>
+    `
+}
+
 //html template for the repositories
 const repoTemplate = (repo) => {
   //change the updated at format
@@ -56,4 +74,4 @@ const repoTemplate = (repo) => {
   return repoDiv;
 };
 
-export { repoTemplate, avatarTemplate };
+export { repoTemplate, avatarTemplate, mobileAvatarTemplate };
