@@ -246,7 +246,7 @@ header {
     border-radius: 6px;
     outline: none;
     box-shadow: #e1e4e833;
-    width: 100%;
+    width: 90%;
 }
 
 .search::placeholder{
@@ -358,3 +358,38 @@ margin-right: 20px;
     color: #3a3a3a;
     margin-top: 20px;
 }
+
+@media (max-width: 767px) { 
+    .header-wrapper{
+        display: none;
+    }
+    .profile-wrapper{
+        display: none;
+    }
+    .repository-details-description{
+        max-width: 200px;
+    }
+    .repository-details-stats p:nth-child(2), p:nth-child(3) {
+        display: none;
+    }
+    .nav-control{
+        display: none;
+    }
+    .sticky-nav{
+        overflow: scroll;
+        margin-top: 0;
+    }
+    .sticky-nav nav{
+        display: flex;
+        padding: 0;
+    }
+    .tab-item{
+        padding: 8px 10px;
+    }
+    .repository-wrapper{
+        padding: 15px;
+    }
+    .search-wrapper{
+        padding: 4px 0 20px;
+    }
+ }
