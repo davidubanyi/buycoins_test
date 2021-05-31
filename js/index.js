@@ -2,7 +2,7 @@
 
 import fetchGraphqlData from './api'
 import htmlUpdater from './templating'
-import {repoHtml, avatarHtml} from './templates'
+import { repoTemplate, avatarTemplate } from './templates'
 
 const repositoryDiv = document.querySelector('.repository-wrapper')
 const profileDiv = document.querySelector('.profile-wrapper')
@@ -20,26 +20,26 @@ async function handleSubmit(event) {
         loading(true)
         //fire the fetch
         try {
-           const userData = await fetchGraphqlData(gitUsername)
-           if(userData.errors || userData.documentation_url){
-             throw (userData.errors ? userData.errors[0].message : userData.message)
+            const userData = await fetchGraphqlData(gitUsername)
+            if (userData.errors || userData.documentation_url) {
+                throw (userData.errors ? userData.errors[0].message : userData.message)
             }
             //the data is fine 
-            else { 
-            const user = userData.data.user
-            //simplify data from the api
-            const repos = [...user.repositories.nodes]
-            const profile = {name: user.name, bio: user.bio, username: user.login, avatarUrl: user.avatarUrl }
-            //update the repositories
-            htmlUpdater(repos, repositoryDiv, repoHtml)
-            //update the profile
-            htmlUpdater(profile, profileDiv, avatarHtml )
-            //update repo count
-            htmlUpdater(user.repositories.totalCount, repoCounter)    
-            //show the page with the updated info
-            mainContent.removeAttribute('hidden')
-            usernameForm.classList.add('is-hidden')
-        }
+            else {
+                const user = userData.data.user
+                //simplify data from the api
+                const repos = [...user.repositories.nodes]
+                const profile = { name: user.name, bio: user.bio, username: user.login, avatarUrl: user.avatarUrl }
+                //update the repositories
+                htmlUpdater(repos, repositoryDiv, repoTemplate)
+                //update the profile
+                htmlUpdater(profile, profileDiv, avatarTemplate)
+                //update repo count
+                htmlUpdater(user.repositories.totalCount, repoCounter)
+                //show the page with the updated info
+                mainContent.removeAttribute('hidden')
+                usernameForm.classList.add('is-hidden')
+            }
         }
         catch (error) {
             console.log(error)

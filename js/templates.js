@@ -1,7 +1,7 @@
 
-const avatarHtml =(avatar)=>{
+const avatarTemplate = (avatar) => {
     //small avatar above
-    document.querySelector('.avatar-small').setAttribute('src',`${avatar.avatarUrl}`)
+    document.querySelector('.avatar-small').setAttribute('src', `${avatar.avatarUrl}`)
     return `
     <img style="height:auto;" alt="Avatar" width="260" height="260" class="big-avatar" src="${avatar.avatarUrl}">
                 <div>
@@ -11,19 +11,19 @@ const avatarHtml =(avatar)=>{
                 </div>`
 }
 
-const repoHtml = (repo)=>{
+const repoTemplate = (repo) => {
     //change the updated at format
     const reformatedUpdate = "Updated at 10 days ago"
-    
+
     const repoDiv = document.createElement('div')
     repoDiv.classList.add('repository-details-wrapper')
     repoDiv.innerHTML = `
     <div class="repository-details">
     <h3 class="repository-details-name">${repo.name}</h3>
-    <p class="repository-details-description">${repo.description?repo.description:""}
+    <p class="repository-details-description">${repo.description ? repo.description : ""}
     </p>
     <div class="repository-details-stats">
-        <p><span class="repo-language-color" style="background-color: ${repo.primaryLanguage ?repo.primaryLanguage.color:''}"></span>${repo.primaryLanguage? repo.primaryLanguage.name: ''}</p>
+        <p><span class="repo-language-color" style="background-color: ${repo.primaryLanguage ? repo.primaryLanguage.color : ''}"></span>${repo.primaryLanguage ? repo.primaryLanguage.name : ''}</p>
         <p><svg aria-label="star" role="img" viewBox="0 0 16 16" version="1.1" data-view-component="true" height="16" width="16" class=" octicon-star">
             <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
         </svg>${repo.stargazerCount}</p>
@@ -38,4 +38,4 @@ const repoHtml = (repo)=>{
     return repoDiv
 }
 
-export {repoHtml, avatarHtml }
+export { repoTemplate, avatarTemplate }
