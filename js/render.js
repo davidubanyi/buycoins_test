@@ -10,7 +10,11 @@ const htmlRenderer = (data, htmlEl, htmlTemplate) => {
     htmlEl.innerHTML = htmlTemplate(data);
   //render directly if no template is available  
   } else {
-    htmlEl.innerHTML = data.toString();
+    if(data.typeof !== "String"){
+      htmlEl.innerHTML = data.toString();
+    } else{
+      htmlEl.innerHTML = data
+    }
   }
 };
 

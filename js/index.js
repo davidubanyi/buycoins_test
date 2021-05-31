@@ -1,6 +1,15 @@
 import fetchGraphqlData from "./api";
-import htmlRenderer from "./templating";
-import { repoTemplate, avatarTemplate, mobileAvatarTemplate } from "./templates";
+import htmlRenderer from "./render";
+import { repoTemplate, avatarTemplate, mobileAvatarTemplate, staticHtml } from "./templates";
+
+
+//get static content nodes
+const usernameForm = document.getElementById("usernameForm");
+const errorDiv = document.getElementById("error");
+const mainContent = document.querySelector(".main");
+
+//render the static html
+htmlRenderer(staticHtml, mainContent)
 
 //get template nodes
 const repositoryDiv = document.querySelector(".repository-wrapper");
@@ -8,10 +17,6 @@ const profileDiv = document.querySelector(".profile-wrapper");
 const repoCounter = document.querySelector(".repository-counter");
 const mobileProfileDiv = document.querySelector(".mobile-avatar-wrapper")
 
-//get static content nodes
-const usernameForm = document.getElementById("usernameForm");
-const errorDiv = document.getElementById("error");
-const mainContent = document.querySelector(".main");
 
 //handle the username submission
 usernameForm.onsubmit = handleSubmit;
