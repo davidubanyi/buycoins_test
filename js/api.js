@@ -8,7 +8,7 @@ const query = `query user($login:String!) {
       avatarUrl
       bio
       bioHTML
-      repositories(last: 20){
+      repositories(first:20,orderBy:{field:UPDATED_AT, direction:DESC}){
         totalCount
         nodes{
           name
